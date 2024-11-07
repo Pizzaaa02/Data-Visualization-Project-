@@ -1,0 +1,33 @@
+.chart-section {
+    padding: 60px 20px; /* Add padding for spacing */
+}
+
+.chart-container {
+    display: flex; /* Use flexbox for layout */
+    align-items: center; /* Center items vertically */
+    justify-content: space-between; /* Space items out */
+}
+
+.chart-content {
+    flex: 1; /* Allow this to take available space */
+    padding: 20px; /* Padding around content */
+}
+
+.chart-graph {
+    flex: 1; /* Allow this to take available space */
+    padding: 20px; /* Padding around graph */
+    background-color: #f9f9f9; /* Light background for graph */
+    border: 1px solid #ddd; /* Border around graph */
+    height: 300px; /* Fixed height for graphs */
+    display: flex; /* Center the graph content */
+    align-items: center; /* Center vertically */
+    justify-content: center; /* Center horizontally */
+}
+
+.map-container {
+    text-align: center; /* Center map content */
+    padding: 20px; /* Padding around map */
+    height: 300px; /* Fixed height for map */
+    background-color: #f9f9f9; /* Light background for map */
+    border: 1px solid #ddd; /* Border around map */
+}
