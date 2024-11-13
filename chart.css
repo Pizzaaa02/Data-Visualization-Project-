@@ -1,33 +1,136 @@
+.chart-bg{
+    background-color:rgb(104, 99, 91);
+}
+
+/* section encasing everything */
 .chart-section {
-    padding: 60px 20px; /* Add padding for spacing */
+    position: relative;
+    width: 100%;
+    min-height: 100vh; /* Optional: Set to full viewport height */
+    height: auto;
+    padding: 10px; /* Add some top padding for the title */
+    display: flex;
+    flex-direction: column;
 }
 
-.chart-container {
-    display: flex; /* Use flexbox for layout */
-    align-items: center; /* Center items vertically */
-    justify-content: space-between; /* Space items out */
-}
-
-.chart-content {
-    flex: 1; /* Allow this to take available space */
-    padding: 20px; /* Padding around content */
-}
-
-.chart-graph {
-    flex: 1; /* Allow this to take available space */
-    padding: 20px; /* Padding around graph */
-    background-color: #f9f9f9; /* Light background for graph */
+.chart-graph-section {
+    width: 100%;
+    background-color: rgb(229, 221, 209); /* Light background for graph */
+    border-radius: 32px; /* Rounding the corner */
     border: 1px solid #ddd; /* Border around graph */
-    height: 300px; /* Fixed height for graphs */
-    display: flex; /* Center the graph content */
-    align-items: center; /* Center vertically */
-    justify-content: center; /* Center horizontally */
+    display: flex; /* Set to flex to make items sit side by side */
+    flex-direction: row; /* Align items side by side */
+    align-items: center; /* Center items vertically */
+    justify-content: flex-start; /* Start alignment to let items occupy their space naturally */
+    gap: 20px; /* Space between graph and content box */
+    padding: 20px; /* Padding around the whole section */
+    box-sizing: border-box;
+}
+
+.chart-content-box-left {
+    flex: 1; /* Make the content box take less space compared to the chart */
+    width: 650px; 
+    height: 500px;
+    background-color: var(--pearl-bush);
+    display: flex;
+    flex-direction: column;
+    box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.5);
+    box-sizing: border-box; 
+}
+
+.chart-content-box-right {
+    flex: 1; /* Make the content box take less space compared to the chart */
+    width: 650px; 
+    height: 500px;
+    background-color: var(--pearl-bush);
+    display: flex;
+    flex-direction: column;
+    box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.5);
+    box-sizing: border-box; 
+}
+
+.chart-graph-left, .chart-graph-right{
+    width: 100%;
+    padding: 10px; /* Padding around graph */
+    background-color:rgb(229, 221, 209); /* Light background for graph */
+}
+
+.chart-graph-right {
+    flex: 1; /* Make the chart area take more space compared to the content box */
+    min-width: 60%; /* Minimum width to make sure chart area is wide enough */
+    padding: 10px; /* Padding around the graph */
+    background-color: rgb(229, 221, 209); /* Light background for graph */
+    box-sizing: border-box;
+}
+
+.chart-graph-left {
+    flex: 1; /* Make the chart area take more space compared to the content box */
+    min-width: 60%; /* Minimum width to make sure chart area is wide enough */
+    padding: 10px; /* Padding around the graph */
+    background-color: rgb(229, 221, 209); /* Light background for graph */
+    box-sizing: border-box;
 }
 
 .map-container {
-    text-align: center; /* Center map content */
-    padding: 20px; /* Padding around map */
-    height: 300px; /* Fixed height for map */
-    background-color: #f9f9f9; /* Light background for map */
-    border: 1px solid #ddd; /* Border around map */
+    position: relative;
+    width: 100%;
+    min-height: 100vh; /* Optional: Set to full viewport height */
+    height: auto;
+    padding: 10px; /* Add some top padding for the title */
+    display: flex;
+    flex-direction: column;
 }
+
+.country-navigation{
+    position: relative;
+    text-align: center;
+    font-size: 24px;
+    font-weight: bold;
+}
+
+.chart2-title p{
+    position: relative;
+    text-align: center;
+    font-size: 24px;
+    font-weight: bold;
+}
+
+.chart3-title {
+    position: relative;
+    top: 10px;
+    right: 400px;
+    text-align: center;
+    font-size: 18px;
+    font-weight: bold;
+    z-index: 10; /*push tooltip to the front */
+    margin-bottom: 10px; /* Space between title and chart */
+}
+.chart3-title p{
+    position: relative;
+    text-align: center;
+    font-size: 24px;
+    font-weight: bold;
+}
+.chart4-title p{
+    position: relative;
+    text-align: center;
+    font-size: 24px;
+    font-weight: bold;
+}
+
+.map-title p{
+    position: relative;
+    text-align: center;
+    font-size: 24px;
+    font-weight: bold;
+}
+
+.class-description p{
+    position: relative;
+    text-align: center;
+    font-size: 18px;
+
+}
+
+
+

@@ -1,0 +1,11 @@
+body {
+    font-family: Arial, sans-serif;
+  }
+  .tooltip2 {
+    position: absolute;
+    background-color: white;
+    padding: 5px;
+    border: 1px solid #ccc;
+    pointer-events: none;
+    z-index: 10;
+  }

@@ -1,0 +1,85 @@
+/* Color palette */
+:root {
+    --pearl-bush: #E5DDD1; /* Background color */
+    --flint: #68635B;       /* Dark color for text and elements */
+}
+
+/* Overall Page Background */
+body {
+    background-color: var(--pearl-bush);
+    color: var(--flint);
+    font-family: 'Lato', sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+
+
+/* Dropdown Container Styling */
+.dropdown-below-header {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 20px;
+}
+
+#country-select {
+    padding: 5px;
+    border: 1px solid var(--flint);
+    border-radius: 4px;
+    background-color: white;
+    color: var(--flint);
+}
+
+/* Chart Container Styling for the Right Area */
+#Drug-resist-tb {
+    flex: 1 1 70%; 
+    background-color: var(--pearl-bush);
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.2);
+}
+
+/* Bar Styling */
+.bar {
+    transition: fill 0.3s;
+}
+
+.bar:hover {
+    fill: rgba(0, 195, 255, 0.8);
+}
+
+/* Axis Styling */
+.axis--x text,
+.axis--y text {
+    font-size: 12px; 
+    fill: var(--flint);
+}
+
+.axis--x line,
+.axis--y line {
+    stroke: var(--flint);
+}
+
+/* Y-Axis Label Adjustment */
+.y-axis-label {
+    text-anchor: middle;
+    transform: rotate(-90deg);
+    font-size: 14px;
+    fill: var(--flint);
+    transform-origin: left center;
+}
+
+/* Tooltip Styling */
+#tooltip {
+    position: absolute;
+    background-color: var(--pearl-bush);
+    border: 1px solid var(--flint);
+    border-radius: 4px;
+    padding: 10px;
+    font-size: 14px;
+    color: var(--flint);
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+    z-index: 10;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}

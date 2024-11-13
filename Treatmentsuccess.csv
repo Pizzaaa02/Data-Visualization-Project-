@@ -1,0 +1,17 @@
+Year,Countries,Treatment success rate: new TB cases %,Treatment success rate: HIV-positive TB cases %
+2021,China,94,90
+2020,China,95,86
+2019,China,94,71
+2018,China,94,80
+2017,China,93,87
+2016,China,93,51
+2015,China,94,87
+2021,India,87,78
+2020,India,85,73
+2019,India,84,71
+2018,India,82,74
+2017,India,81,71
+2016,India,69,75
+2015,India,72,78
+,,,
+The proportion of cases registered in a given year (excluding cases placed on a second-line drug regimen) that successfully completed treatment without bacteriological evidence of failure.,,,

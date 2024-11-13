@@ -1,0 +1,13 @@
+.line {
+  fill: none;
+  stroke-width: 2px;
+}
+.axis {
+  font: 10px sans-serif;
+}
+.chart4-title {
+  text-align: right; /* Aligns text to the right */
+  padding-right: 10px; /* Adds a little spacing from the right edge */
+  font-size: 16px;
+  font-weight: bold;
+}

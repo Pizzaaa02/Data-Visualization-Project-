@@ -1,0 +1,55 @@
+
+#chart-container {
+  background: white;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.2);
+}
+
+#switch-button {
+  display: block;
+  margin-bottom: 10px;
+  padding: 8px 16px;
+  font-size: 16px;
+  border: none;
+  border-radius: 4px;
+  background-color: #007bff;
+  color: white;
+  cursor: pointer;
+}
+
+#switch-button:hover {
+  background-color: #0056b3;
+}
+
+.country-navigation {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 10px;
+}
+
+.arrow-button {
+  cursor: pointer;
+  font-size: 24px; /* Adjust size as needed */
+  margin: 0 10px; /* Space between arrows */
+  
+}
+
+#country-title {
+  margin: 0; /* Remove default margin */
+  font-size: 50px;
+}
+svg {
+  font: 12px sans-serif;
+}
+
+.line {
+  fill: none;
+  stroke-width: 2px;
+}
+
+.legend {
+  font-size: 12px;
+  font-weight: bold;
+}

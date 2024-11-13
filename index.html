@@ -2,100 +2,181 @@
 <html lang="en">
 
 <head>
-	<meta charset="UTF-8"/>
-	<meta name="description"	content="Data Visualisation Exercise 1"/>
-	<meta name="keywords"		  content="HTML, CSS"/>
-	<meta name="author"			  content="Your name here"/>
+    <meta charset="UTF-8"/>
+    <meta name="description" content="Data Visualisation Exercise 1"/>
+    <meta name="keywords" content="HTML, CSS"/>
+    <meta name="author" content="Your name here"/>
 
-	<title>Tuberculosis Data's in 2015 V.S 2022</title>
-	<link rel="stylesheet" type="text/css" href="./index.css">
-	<link rel="stylesheet" type="text/css" href="./header.css">	
-	<link rel="stylesheet" type="text/css" href="./chart.css">	
-	<link rel="stylesheet" type="text/css" href="https://www.w3schools.com/w3css/4/w3.css">
-	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato">
-	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
-	<script src="https://d3js.org/d3.v6.min.js"></script>
-	<header class="section-header">
-		<nav>
-			<ul>
-				<li><a href="#chart1">Chart 1</a></li>
-				<li><a href="#chart2">Chart 2</a></li>
-				<li><a href="#chart3">Chart 3</a></li>
-				<li><a href="#chart4">Chart 4</a></li>
-				<li><a href="#map">Map</a></li>
-			</ul>
-		</nav>
-	</header>
-
+    <title>Tuberculosis Data's in 2015 V.S 2022</title>
+    <link rel="stylesheet" type="text/css" href="./index.css">
+    <link rel="stylesheet" type="text/css" href="https://www.w3schools.com/w3css/4/w3.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="./header.css">    
+    <link rel="stylesheet" type="text/css" href="./chart.css">    
+    <link rel="stylesheet" type="text/css" href="./Treatment.css">
+    <link rel="stylesheet" type="text/css" href="./DB_TB.css">
+	<link rel="stylesheet" type="text/css" href="./TBwithHIV.css">
+    <link rel="stylesheet" type="text/css" href="./Map_3D.css">
+    <!-- <link rel="stylesheet" type="text/css" href="./mortality.css"> -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script src="https://d3js.org/d3.v6.min.js"></script>
+    <script src="https://unpkg.com/topojson@3"></script>
+    <header class="section-header">
+        <nav>
+            <ul>
+                <li><a href="#chart1">Chart 1</a></li>
+                <li><a href="#chart2">Chart 2</a></li>
+                <li><a href="#chart3">Chart 3</a></li>
+                <li><a href="#chart4">Chart 4</a></li>
+                <li><a href="#map">Map</a></li>
+            </ul>
+        </nav>
+    </header>
 </head>
 
 <body>
-	
-  <!-- First Parallax Image with Topic Text -->
-  <div class="bgimg-1 w3-display-container w3-opacity-min w3-padding-64"  id="home">
-	<div class="w3-display-middle w3-padding-64 " style="color: whitesmoke" >
-	  	<span class="w3-center w3-padding-large  w3-xlarge w3-wide w3-animate-opacity">
-			
-			
-			Tuberculosis <span class="w3-hide-small">Trend:</span><br>
-			<div class="w3-center">2015-2022</div>
-	
-		</span>
-	</div>
-  </div>
+
+    <!-- First Parallax Image with Topic Text -->
+    <div class="bgimg-1 w3-display-container w3-opacity-min w3-padding-64"  id="home">
+        <div class="w3-display-middle w3-padding-64 " style="color: whitesmoke">
+            <span class="w3-center w3-padding-large  w3-xlarge w3-wide w3-animate-opacity">
+                Tuberculosis <span class="w3-hide-small">Trend:</span><br>
+                <div class="w3-center">2015-2022</div>
+            </span>
+        </div>
+    </div>
   
-  <!--  -->
-  <div class="bottom-produce-intro-section">
-	
-		<span class="text-1">Presented By</span>
-		<div class="author-name-container">
-			<span class="author">Heong Yu Zheng</span>
-			<span class="author">Jorhow Wong</span>
-			<span class="author">Adrian Chew</span>
-		</div>
-  </div>
-
-<section id="chart1" class="chart-section">
-    <div class="chart-container">
-        <div class="chart-content">Chart 1 Content (Graph on the left)</div>
-        <div class="chart-graph">Graph 1</div>
+    <!-- Author Section -->
+    <div class="bottom-produce-intro-section">
+        <span class="text-1">Presented By</span>
+        <div class="author-name-container">
+            <span class="author">Heong Yu Zheng</span>
+            <span class="author">Jorhow Wong</span>
+            <span class="author">Adrian Chew</span>
+        </div>
     </div>
-</section>
+    <div id="tooltip" class="tooltip"></div>
+    <div id="tooltip2" class="tooltip2"></div>
+    <!-- Charts Section -->
+    <section class="chart-bg">
 
-<section id="chart2" class="chart-section">
-    <div class="chart-container">
-        <div class="chart-graph">Graph 2</div>
-        <div class="chart-content">Chart 2 Content (Graph on the right)</div>
-    </div>
-</section>
+        <section id="chart1" class="chart-section">
+            <div id="chart-graph-section" class="chart-graph-section">
+                <div id="chart-content-box-left" class="chart-content-box-left">
+                    <div class="country-navigation">
+                        <span id="prev-country" class="arrow-button">&lt;</span>
+                        <h2 id="country-title">Country Chart</h2>
+                        <span id="next-country" class="arrow-button">&gt;</span>
+                    </div>
+                    <div class="class-description">
+                        <br>
+                        <p>Here you can provide details about the chart, the selected countries, and specific information on the data being displayed. This content box will dynamically help the users understand the data trends, differences between the countries, and additional context that makes the visualization more meaningful.</p>
+                    </div>
+                </div>
+                <div id="TB_HIV" class="chart-graph-right"></div>
+                    
 
-<section id="chart3" class="chart-section">
-    <div class="chart-container">
-        <div class="chart-content">Chart 3 Content (Graph on the left)</div>
-        <div class="chart-graph">Graph 3</div>
-    </div>
-</section>
 
-<section id="chart4" class="chart-section">
-    <div class="chart-container">
-        <div class="chart-graph">Graph 4</div>
-        <div class="chart-content">Chart 4 Content (Graph on the right)</div>
-    </div>
-</section>
+            </div>
 
-<section id="map" class="chart-section">
-    <div class="map-container">
-        <div class="map-content">Map Content (Centered)</div>
-		<div id="globe" style="width: 100%; height: 500px;">
-			<script src="./Map_3D.js"></script>
-		</div>
-    </div>
-</section>
+        </section>
 
-<script src="./index.js"></script>
+        <section id="chart2" class="chart-section">
+            <div id="chart-graph-section" class="chart-graph-section"> 
 
-	<footer class="footer">2024 COS30045 Data Visualisation Project<br>Group 17</footer>
-x
+                <div id="mortality_chart" class="chart-graph-left">
+                </div>
+                <div id="chart-content-box-right" class="chart-content-box-right">
+                    <div id="chart2-title" class="chart2-title">
+                        <p>Mortality</p>
+                    </div>
+                    <div class="chart-description">
+                        <br>
+                        <p>Here you can provide details about the chart, the selected countries, and specific information on the data being displayed. This content box will dynamically help the users understand the data trends, differences between the countries, and additional context that makes the visualization more meaningful.</p>
+                    </div>
+    
+                </div>
+            </div>
+
+        </section>
+
+        <section id="chart3" class="chart-section">
+
+            
+            <div id="chart-graph-section" class="chart-graph-section"> 
+
+                
+                <div id="chart-content-box-left" class="chart-content-box-left">
+                    <div id="chart3-title" class="chart3-title">
+                        <p>China: Confirmed Cases of RR-/MDR-TB</p>
+                    </div>
+                    <div id="dropdown-container" class="dropdown-below-header">
+                        <select id="country-select">
+                            <option value="China">China</option>
+                            <option value="India">India</option>
+                            <option value="Stacked">Stacked Chart</option>
+                        </select>
+                    </div>
+                    <div class="chart-description">
+                        <br>
+                        <p>Here you can provide details about the chart, the selected countries, and specific information on the data being displayed. This content box will dynamically help the users understand the data trends, differences between the countries, and additional context that makes the visualization more meaningful.</p>
+                    </div>
+    
+                   
+                </div>
+                <div id="Drug-resist-tb" class="chart-graph-right"> </div>
+            </div>
+
+            
+
+        </section>
+			
+
+
+        <section id="chart4" class="chart-section">
+            <div id="chart-graph-section" class="chart-graph-section">
+                <div id="treat-chart" class="chart-graph-left"></div>
+                <div id="chart-content-box-right" class="chart-content-box-right">
+                    <div class="chart4-title" id="chart4-title">
+                        <p>China V.S. India Treatment Rate</p>            
+                        <br>
+
+                    </div>
+
+                    <div class="class-description">
+                        <p>Here you can provide details about the chart, the selected countries, and specific information on the data being displayed. This content box will dynamically help the users understand the data trends, differences between the countries, and additional context that makes the visualization more meaningful.</p>
+                    </div>
+                </div>
+                
+            </div>
+
+        </section>
+
+        <section id="map1" class="map-container">
+            <div id="chart-graph-section" class="chart-graph-section">
+                <div id="chart-content-box-left" class="chart-content-box-left">
+                    <div id="map-title" class="map-title">
+                        <p>Global TB Map Based on OECD</p>
+                    </div>
+                </div>
+                <div id="map" class="chart-graph-right"></div>
+
+            </div>
+        </section>
+
+
+    </section>
+
+	<script src="./TBwithHIV.js"></script>
+    <script src="./mortality.js"></script>
+    <script src="./Drug_Resistance.js"></script>
+    <script src="./Treatment.js"></script>
+    <script src="Map_3D.js"></script>
+
+    <!-- <script src="./Map_3D.js"></script> -->
+    <script src="./index.js"></script>
+
+    <footer class="footer">2024 COS30045 Data Visualisation Project<br>Group 13</footer>
 </body>
 </html>
