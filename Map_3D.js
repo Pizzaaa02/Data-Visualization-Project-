@@ -6,7 +6,7 @@ const heightMap = 850;
 Promise.all([
     d3.json('https://cdn.jsdelivr.net/npm/world-atlas@2/countries-110m.json'),
     d3.csv("./Global_Incident.csv") // CSV path with COVID data
-  ]).then(([world, data]) => {
+]).then(([world, data]) => {
     // Map your CSV data for easy lookup
     const incidentRates = new Map(data.map(d => [d.Country, +d.IncidentRate]));
   
@@ -36,6 +36,7 @@ Promise.all([
       .enter()
       .append("path")
       .attr("d", path)
+      .attr("class", "country") // Add the class to each country path
       .attr("fill", d => {
         // Get the country name from GeoJSON
         const countryName = d.properties.name;
@@ -56,15 +57,27 @@ Promise.all([
         // Show tooltip on hover
         const countryName = d.properties.name;
         const incidentRate = incidentRates.get(countryName);
+        
+        // Set opacity of other countries to 50%
+        d3.selectAll(".country") // Select all countries by class
+          .style("opacity", 0.5);
+        
+        // Set opacity of hovered country back to 100%
+        d3.select(this).style("opacity", 1);
+        
         tooltip.transition().duration(200).style("opacity", 0.9);
         tooltip.html(`${countryName}: ${incidentRate != null ? incidentRate : 'No data'}`)
           .style("left", (event.pageX + 5) + "px")
           .style("top", (event.pageY - 28) + "px");
       })
       .on("mouseout", function () {
+        // Reset all countries to full opacity
+        d3.selectAll(".country")
+          .style("opacity", 1);
+        
         // Hide tooltip when not hovering
         tooltip.transition().duration(500).style("opacity", 0);
-      });
-  }).catch(error => {
+    });
+}).catch(error => {
     console.error('Error loading the data:', error);
-  });
+});
